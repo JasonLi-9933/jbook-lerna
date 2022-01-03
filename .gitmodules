@@ -1,3 +1,0 @@
-[submodule "packages/local-client"]
-	path = packages/local-client
-	url = https://github.com/JasonLi-9933/jbook.git
