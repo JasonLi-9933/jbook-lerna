@@ -16,10 +16,27 @@ exports.createCellsRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const promises_1 = __importDefault(require("fs/promises"));
 const path_1 = __importDefault(require("path"));
+const default_content_1 = require("../default-content");
+const randomId = () => {
+    return Math.random().toString(36).substring(2, 7);
+};
 const createCellsRouter = (filename, dir) => {
     const router = express_1.default.Router();
     const fullPath = path_1.default.join(dir, filename);
     router.use(express_1.default.json()); // make req.body accessible
+    const defaultCells = [];
+    const introTextCell = {
+        id: randomId(),
+        type: "text",
+        content: default_content_1.introText,
+    };
+    const sampleCodeCell = {
+        id: randomId(),
+        type: "code",
+        content: default_content_1.sampleCode
+    };
+    defaultCells.push(introTextCell);
+    defaultCells.push(sampleCodeCell);
     router.get("/cells", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         // read the file
         try {
@@ -27,11 +44,11 @@ const createCellsRouter = (filename, dir) => {
             res.send(JSON.parse(result));
         }
         catch (err) {
-            if (err.code === 'ENOENT') {
+            if (err.code === "ENOENT") {
                 // no file found
                 // create a file and add default content
-                yield promises_1.default.writeFile(fullPath, '[]', 'utf-8');
-                res.send([]);
+                yield promises_1.default.writeFile(fullPath, JSON.stringify(defaultCells), "utf-8");
+                res.send(defaultCells);
             }
             else {
                 throw err;
