@@ -1,6 +1,6 @@
 {
   "name": "jbook-by-jl",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "files": [
     "dist"
@@ -22,7 +22,7 @@
     "@jbook-by-jl/local-client": "^1.0.1"
   },
   "devDependencies": {
-    "@jbook-by-jl/local-api": "^1.0.1",
+    "@jbook-by-jl/local-api": "^1.1.0",
     "@types/node": "^17.0.6",
     "commander": "^8.3.0",
     "esbuild": "0.8.26",
