@@ -21,7 +21,7 @@ All of your changes get saved to the file you opened Jbook with. So if your run 
 
 # Usage
 
-`jbook-by-jl serve [filename/path-to-file] [--port==<number>]`
+`jbook-by-jl serve [filename/path-to-file] [--port=<number>]`
 
 Examples: `jbook-by-jl serve test.js --port=3000` `jbook-by-jl -p 3000 test.js`
 
